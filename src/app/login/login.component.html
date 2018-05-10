@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">Discipulus</mat-toolbar>
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" class="loginBox">
+  <div fxFlex="33%" class="loginCard">
+    <mat-card *ngIf="login">
+      <mat-card-header>
+        <mat-card-title>Log In</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <mat-form-field class="form-field">
+          <input matInput type="email" placeholder="Email" name="username" [(ngModel)]="logInUser.username">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="logInUser.password">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="logIn()">Log In</button>
+        <button mat-button (click)="login = !login">New User</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card *ngIf="!login">
+      <mat-card-header>
+        <mat-card-title>New User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <mat-form-field class="form-field">
+            <input matInput type="text" placeholder="Username" name="new_username" [(ngModel)]="newUser.username">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput type="email" placeholder="Email" name="new_email" [(ngModel)]="newUser.email">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput type="text" placeholder="Name" name="new_name" [(ngModel)]="newUser.name">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput type="password" placeholder="Password" name="new_password" (blur)="checkPasswords()" [(ngModel)]="newUser.password">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput type="password" placeholder="Repeat Password" name="repeat_password" (blur)="checkPasswords()" [(ngModel)]="newUser.repeatPassword">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-select placeholder="University" [(ngModel)]="newUser.university">
+            <mat-option *ngFor="let university of universities" [value]="university.uid">{{university.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="NewUser()">Create User</button>
+        <button mat-button (click)="login = !login">Log In</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

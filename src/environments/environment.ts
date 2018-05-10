@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAv8h8WUFzvFYGRZnrHnaYAfaoVIj5zSH0',
+    authDomain: 'discipulus-web.firebaseapp.com',
+    databaseURL: 'https://discipulus-web.firebaseio.com',
+    projectId: 'discipulus-web',
+    storageBucket: 'discipulus-web.appspot.com',
+    messagingSenderId: '456613878792',
+    settings: {
+      timestampsInSnapshots: true
+    }
+  }
 };
 
 /*

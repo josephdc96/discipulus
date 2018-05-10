@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+  <span>Discipulus</span><span class="spacer"></span><button mat-button>{{user.name}}</button>
+</mat-toolbar>
+<div fxLayout fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" style="margin: 10px;">
+  <div fxFlex="33%">
+    <mat-card>
+      <mat-card-title>{{user.name}}</mat-card-title>
+      <mat-card-content>
+        <h3>University</h3>
+        <p>{{user.university.name}}</p>
+        <h3>GPA</h3>
+        <p>4.0</p>
+        <h3>Hours Completed</h3>
+        <p>92</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card style="margin-top: 10px">
+      <mat-card-title>Messages</mat-card-title>
+      <mat-card-content>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let message of messages">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <h4 mat-line>{{message.name}}</h4>
+            <p mat-line>{{getContent(message)}}</p>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>New Message</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxFlex="67%">
+    <mat-card>
+      <mat-card-title>Classes</mat-card-title>
+      <mat-card-content>
+        <mat-toolbar></mat-toolbar>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let semester of semesters">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{semester.name}}</mat-panel-title>
+              <mat-panel-description>Hours: 12, GPA: 4.0</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <mat-list-item *ngFor="let cl of semester.classes">
+                <h4 mat-line>{{cl.title}}</h4>
+                <p mat-line>{{cl.code}}</p>
+                <mat-chip-list>
+                  <mat-chip>{{cl.grade}}</mat-chip>
+                </mat-chip-list>
+              </mat-list-item>
+            </mat-nav-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
